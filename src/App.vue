@@ -1,5 +1,6 @@
 <template>
     <div>
+        <a href="https://github.com/login/oauth/authorize?client_id=40e9e869abab72c0da76&scope=public_repo" class="fix">登录</a>
         <button class="btn fix" id="show-note" :class="{hidden:(ifShowNote)}" @click="changeNoteShowState">note</button>
         <Note class="fix" :class="{hidden:(!ifShowNote)}" @changeShowNoteState="changeNoteShowState"></Note>
     </div>
@@ -12,7 +13,7 @@
     name: 'App',
     data () {
       return {
-        ifShowNote: false
+        ifShowNote: false,
       }
     },
     methods: {

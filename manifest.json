@@ -7,11 +7,19 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["./dist/bundle.js"]
+      "matches": ["https://github.com/saltfish666/pageNote-node?token=*"],
+      "js": ["./content_scripts/login.js"]
     },{
       "matches": ["<all_urls>"],
-      "js": ["./dist/test.js"]
+      "js": ["./content_scripts/getToken.js"]
+    }, {
+      "matches": ["<all_urls>"],
+      "js": ["./dist/bundle.js"]
     }
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "./background/controlToken.js","./background/bg1.js"
+    ]
+  }
 }

@@ -2,17 +2,13 @@
 vue + less + webpack
 
 ## 如何使用
-```
-git clone [this repo]
-webpack [--watch]
-```
-然后打开index.html 即可观察到网页版todoList
+如何在查件登录？
+
+直接连接是在浏览器访问登录页面，现在希望
+然后插件匹配到登录页面，
+将token传递宝background js存储在localstorage
+
+每次contentscrpt 向 bg请求token
+再用token向后台发起请求
 
 
-chrome打开网址 chrome://extensions/
-
-界面中选择 LOAD UNPACKED , 并选中当前目录
-
-即可在右上角看到本扩展。
-
-todoList的内容会存储在localstorage，更换浏览器、删除插件会导致内容丢失 

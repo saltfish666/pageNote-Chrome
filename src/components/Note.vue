@@ -7,12 +7,14 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: 'Note',
     data () {
       return {
         edit: false,
-        text: ''
+        text: '',
+        token: ''
       }
     },
     methods: {
@@ -20,25 +22,73 @@
         this.$emit('changeShowNoteState')
       },
       changeEditState () {
+        console.log(this)
+        if(this.edit){
+          /*axios.post('http://libai688.com:8072/note', {
+            params: {
+              token: this.token,
+              domain: window.location.origin,
+              path: window.location.pathname,
+              content: this.text
+            }
+          })
+            .then((res) => {
+              console.log(res)
+            })*/
+          let options = {
+            method: 'post',
+            url: 'http://libai688.com:8072/note',
+            params: {
+              token: this.token,
+              domain: window.location.host,
+              path: window.location.pathname,
+              content: this.text
+            }
+          }
+          axios(options)
+            .then((res) => {
+              console.log(res)
+            })
+          /*chrome.runtime.sendMessage({ type:'ajax', options:options}, (res) => {
+            console.log(res)
+          })*/
+        }
+
         this.edit = !this.edit
       }
     },
     beforeMount () {
-      let note
-      try{
-        note = JSON.parse(localStorage.__pageNote__)
-      }catch(e){
-        note = {}
-        localStorage.__pageNote__ = JSON.stringify(note)
+      chrome.runtime.sendMessage({ type:'get_token' }, (response) => {
+        console.log(response)
+        this.token = response.token
 
-        return
-      }
-      this.text = note[window.location.pathname] || ''
+        let url = 'http://libai688.com:8072/note?'
+        let params = {
+          token: this.token,
+          domain: window.location.host,
+          path: window.location.pathname
+        }
+        for(let key in params){
+          url += `&${key}=${params[key]}`
+        }
+        let options = {
+          method: 'get',
+          url: url
+        }
+        axios(options)
+          .then( (res) => {
+            console.log(res)
+            this.text = res.data.msg[0]['content']
+          })
+        /*chrome.runtime.sendMessage({ type:'ajax', options:options}, function(err, res){
+          console.log('hi,ajax getted callback')
+          console.log(err)
+          console.log(res)
+          //this.text = res.data.msg[0]['content']
+        })*/
+      })
     },
     updated () {
-      let note = JSON.parse(localStorage.__pageNote__)
-      note[window.location.pathname] = this.text
-      localStorage.__pageNote__ = JSON.stringify(note)
     }
   }
 </script>
