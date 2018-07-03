@@ -3,7 +3,9 @@
         <div class="aside">
             <button @click="hidden" class="item show_state">隐藏</button>
             <button @click="changeEditState" class="item edit">{{ edit ? "完成":"编辑"}}</button>
-            <a href="https://github.com/login/oauth/authorize?client_id=40e9e869abab72c0da76&scope=public_repo"><button v-show="!login" class="item login">登录</button></a>
+            <a href="https://github.com/login/oauth/authorize?client_id=40e9e869abab72c0da76&scope=public_repo">
+                <button v-if="!login" class="item login">登录</button>
+            </a>
         </div>
         <div class="body" v-if="!edit">{{text}}</div>
         <textarea v-model="text" v-if="edit"></textarea>
@@ -32,10 +34,12 @@
             method: 'post',
             url: 'https://libai688.com/note',
             params: {
-              token: this.token,
               domain: window.location.host,
               path: window.location.pathname + window.location.search,
               content: this.text
+            },
+            headers: {
+              Authorization: 'token ' + this.token
             }
           }
           axios(options)
@@ -47,6 +51,11 @@
       }
     },
     beforeMount () {
+        chrome.runtime.sendMessage({ type:'get_token' }, (response) => {
+          this.token = response.token
+          this.login = true
+        })
+
         this.token = localStorage.__pageNote__token
         if(!this.token){
           return null
@@ -65,7 +74,10 @@
         }
         let options = {
           method: 'get',
-          url: url
+          url: url,
+          headers: {
+            Authorization: 'token ' + this.token
+          }
         }
         axios(options)
           .then( (res) => {
