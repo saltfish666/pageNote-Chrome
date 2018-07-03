@@ -81,7 +81,8 @@
         }
         axios(options)
           .then( (res) => {
-            this.text = res.data.msg[0]['content']
+            console.log(res)
+            this.text = res.data[0]['content']
           })
 
     }
