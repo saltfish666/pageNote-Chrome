@@ -1,6 +1,10 @@
 <template>
     <div class="note">
-        <div class="header"><button @click="hidden">隐藏</button><button @click="changeEditState">{{ edit ? "完成":"编辑"}}</button></div>
+        <div class="aside">
+            <button @click="hidden" class="item show_state">隐藏</button>
+            <button @click="changeEditState" class="item edit">{{ edit ? "完成":"编辑"}}</button>
+            <a href="https://github.com/login/oauth/authorize?client_id=40e9e869abab72c0da76&scope=public_repo"><button v-show="!login" class="item login">登录</button></a>
+        </div>
         <div class="body" v-if="!edit">{{text}}</div>
         <textarea v-model="text" v-if="edit"></textarea>
     </div>
@@ -14,7 +18,8 @@
       return {
         edit: false,
         text: '',
-        token: ''
+        token: '',
+        login: false
       }
     },
     methods: {
@@ -22,26 +27,14 @@
         this.$emit('changeShowNoteState')
       },
       changeEditState () {
-        console.log(this)
         if(this.edit){
-          /*axios.post('http://libai688.com:8072/note', {
-            params: {
-              token: this.token,
-              domain: window.location.origin,
-              path: window.location.pathname,
-              content: this.text
-            }
-          })
-            .then((res) => {
-              console.log(res)
-            })*/
           let options = {
             method: 'post',
-            url: 'http://libai688.com:8072/note',
+            url: 'https://libai688.com/note',
             params: {
               token: this.token,
               domain: window.location.host,
-              path: window.location.pathname,
+              path: window.location.pathname + window.location.search,
               content: this.text
             }
           }
@@ -49,24 +42,23 @@
             .then((res) => {
               console.log(res)
             })
-          /*chrome.runtime.sendMessage({ type:'ajax', options:options}, (res) => {
-            console.log(res)
-          })*/
         }
-
         this.edit = !this.edit
       }
     },
     beforeMount () {
-      chrome.runtime.sendMessage({ type:'get_token' }, (response) => {
-        console.log(response)
-        this.token = response.token
+        this.token = localStorage.__pageNote__token
+        if(!this.token){
+          return null
+        } else {
+          this.login = true
+        }
 
-        let url = 'http://libai688.com:8072/note?'
+        let url = 'https://libai688.com/note?'   //插，少了？
         let params = {
           token: this.token,
           domain: window.location.host,
-          path: window.location.pathname
+          path: window.location.pathname + window.location.search
         }
         for(let key in params){
           url += `&${key}=${params[key]}`
@@ -77,18 +69,9 @@
         }
         axios(options)
           .then( (res) => {
-            console.log(res)
             this.text = res.data.msg[0]['content']
           })
-        /*chrome.runtime.sendMessage({ type:'ajax', options:options}, function(err, res){
-          console.log('hi,ajax getted callback')
-          console.log(err)
-          console.log(res)
-          //this.text = res.data.msg[0]['content']
-        })*/
-      })
-    },
-    updated () {
+
     }
   }
 </script>
@@ -96,24 +79,50 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .note{
-        background-color: #ccfff5;
         height: 400px;
         width: 400px;
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        top:20%;
+        right: 0px;
     }
-    button{
-        background-color: aquamarine;
-        border-radius: 10px;
-        margin-left: 20px;
+    .aside{
+        display: flex;
+        flex-direction: column;
     }
-    .header{
-        padding:10px;
+    .aside a {
+        text-decoration: none;
     }
-    .body{
-        padding: 0px 5px;
+    .aside .item{
+        display: block;
+        margin: 0px;
+        height: 22px;
+        width: 45px;
+        text-align: center;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        margin-bottom: 10px;
     }
-    textarea{
+    textarea, .body{
+        background-color: snow;
         width: 100%;
         height: 89%;
         padding: 0px 5px;
+        border: 0.1px solid #e6faff;
+    }
+
+    .show_state{
+        background-color: black !important;
+        color: white !important;
+    }
+    .edit{
+        background-color: #00ccff !important;
+        color: white !important;
+    }
+
+    .login{
+        background-color: #4dff4d !important;
+        color: white !important;
     }
 </style>

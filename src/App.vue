@@ -1,6 +1,5 @@
 <template>
     <div>
-        <a href="https://github.com/login/oauth/authorize?client_id=40e9e869abab72c0da76&scope=public_repo" class="fix">登录</a>
         <button class="btn fix" id="show-note" :class="{hidden:(ifShowNote)}" @click="changeNoteShowState">note</button>
         <Note class="fix" :class="{hidden:(!ifShowNote)}" @changeShowNoteState="changeNoteShowState"></Note>
     </div>
@@ -34,14 +33,14 @@
         right: 0px;
     }
     .btn{
-        height: 30px;
-        color: white;
-        text-align: center;
-        background-color: #009900;
-        border-bottom-left-radius: 12px;
-        border-top-left-radius: 12px;
+        height: 30px !important;
+        color: white !important;
+        text-align: center !important;
+        background-color: #009900 !important;
+        border-bottom-left-radius: 12px !important;
+        border-top-left-radius: 12px !important;
     }
     .hidden{
-        display: none;
+        display: none !important;
     }
 </style>
