@@ -106,11 +106,16 @@
         font-size: 12px !important;
     }
     textarea, .body{
-        background-color: snow;
         width: 100%;
         height: 89%;
         padding: 0px 5px;
         border: 0.1px solid #e6faff;
+    }
+    .body{
+        background-color: #80e5ff;
+    }
+    textarea{
+        background-color: snow;
     }
 
     .show_state{
