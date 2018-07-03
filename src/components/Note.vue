@@ -103,6 +103,7 @@
         border-bottom-left-radius: 10px;
         border-top-left-radius: 10px;
         margin-bottom: 10px;
+        font-size: 12px !important;
     }
     textarea, .body{
         background-color: snow;
