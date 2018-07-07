@@ -2,7 +2,8 @@ node_modules/
 .idea/
 .DS_Store
 
-dist/*
+chrome-extension/dist/*
+
 !dist/.gitkeeper
 pageNote.zip
 

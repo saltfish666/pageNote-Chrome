@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="btn fix" id="show-note" :class="{hidden:(ifShowNote)}" @click="changeNoteShowState">note</button>
+        <button class="btn fix" :class="{hidden:(ifShowNote)}" @click="changeNoteShowState">note</button>
         <Note class="fix" :class="{hidden:(!ifShowNote)}" @changeShowNoteState="changeNoteShowState"></Note>
     </div>
 </template>
@@ -34,11 +34,16 @@
     }
     .btn{
         height: 30px !important;
+        width: 50px !important;
+        font-size: 15px !important;
         color: white !important;
-        text-align: center !important;
+        // text-align: center !important;
+        padding-bottom: 8px;
+        padding-top: 4px; // Lowercase English letters will leave a gap above the content
         background-color: #009900 !important;
         border-bottom-left-radius: 12px !important;
         border-top-left-radius: 12px !important;
+        background-image: none !important; // prevent possiable inner page style
     }
     .hidden{
         display: none !important;
