@@ -1,10 +1,10 @@
 <template>
     <div class="note">
         <div class="aside">
-            <button @click="hidden" class="item show_state">隐藏</button>
-            <button @click="changeEditState" class="item edit">{{ edit ? "完成":"编辑"}}</button>
+            <button @click="hidden" class="item show_state">hidden</button>
+            <button @click="changeEditState" class="item edit">{{ edit ? "finish":"edit"}}</button>
             <a href="https://github.com/login/oauth/authorize?client_id=40e9e869abab72c0da76&scope=public_repo">
-                <button v-if="!login" class="item login">登录</button>
+                <button v-if="!login" class="item login">login</button>
             </a>
         </div>
         <div class="body" v-if="!edit">{{text}}</div>
