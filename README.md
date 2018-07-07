@@ -14,7 +14,7 @@ you can write you note colse to the webpage.
 
 ## How to install ?
 
-click this ![link](https://chrome.google.com/webstore/detail/pagenote/emdjokmfeidbfldcdhckhpkcfiiekohl/related)
+click this [link](https://chrome.google.com/webstore/detail/pagenote/emdjokmfeidbfldcdhckhpkcfiiekohl/related)
 
 ## Is it safe?
 All source code is showed in this project.
