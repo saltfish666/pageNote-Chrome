@@ -77,7 +77,11 @@
           axios(options)
           .then( (res) => {
             console.log(res)
-            this.text = res.data[0]['content']
+            if(res.data.length == 0){
+              this.text = "it is null!"
+            }else{
+              this.text = res.data[0]['content']
+            }
             this.login = true
           }).catch( (err) => {
             if( /401/.test(err.message)){
