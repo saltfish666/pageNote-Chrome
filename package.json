@@ -5,7 +5,7 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
     "watch": "webpack --watch",
-    "zip": "zip pageNote.zip ./background ./dist ./content_scripts ./manifest.json"
+    "zip": "zip -q -r pageNote.zip ./chrome-extension"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -17,9 +17,10 @@
     "babel-loader": "^7.1.4",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
+    "cz-conventional-changelog": "^2.1.0",
+    "file-loader": "^1.1.11",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
-    "file-loader": "^1.1.11",
     "postcss-loader": "",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
@@ -29,5 +30,10 @@
     "webpack": "^4.11.1",
     "webpack-cli": "^3.0.3",
     "webpack-dev-server": "^3.1.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

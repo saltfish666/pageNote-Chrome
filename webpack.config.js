@@ -3,7 +3,7 @@ const path = require("path")
 const conf = {
     entry:path.join(__dirname,"./src/index.js"),
     output: {
-        path: path.join(__dirname,"dist"),
+        path: path.join(__dirname,"./chrome-extension/dist"),
         filename: "bundle.js"
     },
     module:{

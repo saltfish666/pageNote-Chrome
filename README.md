@@ -1,4 +1,4 @@
-## what does it do ?
+## What does it do ?
 When you brower a webpage, you may hava some ideas and 
 want to wirte some notes.
 
@@ -12,10 +12,15 @@ some webpage, it will insert a bookemark to you page.
 
 you can write you note colse to the webpage.
 
-## how to install ?
-Due to I do not have a interal bankcard, I can 
-not upload it to Chrome Store. You have to install
-it by a self.
+## How to install ?
+
+click this ![link](https://chrome.google.com/webstore/detail/pagenote/emdjokmfeidbfldcdhckhpkcfiiekohl/related)
+
+## Is it safe?
+All source code is showed in this project.
+If you doubt it may different with Chrome intall package,
+you can compile soucre code and install it by youself.
+
 
 - step1: clone my project.
 
