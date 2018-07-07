@@ -12,12 +12,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://github.com/saltfish666/pageNote-node?token=*"],
-      "js": ["./content_scripts/login.js"]
+      "matches": ["https://github.com/saltfish666/pageNote-vue?token=*"],
+      "js": ["./content_scripts/setToken.js"]
     },{
-      "matches": ["<all_urls>"],
-      "js": ["./content_scripts/getToken.js"]
-    }, {
       "matches": ["<all_urls>"],
       "js": ["./dist/bundle.js"]
     }

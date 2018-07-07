@@ -52,38 +52,47 @@
     },
     beforeMount () {
         chrome.runtime.sendMessage({ type:'get_token' }, (response) => {
-          this.token = response.token
-          this.login = true
-        })
-
-        this.token = localStorage.__pageNote__token
-        if(!this.token){
-          return null
-        } else {
-          this.login = true
-        }
-
-        let url = 'https://libai688.com/note?'   //插，少了？
-        let params = {
-          token: this.token,
-          domain: window.location.host,
-          path: window.location.pathname + window.location.search
-        }
-        for(let key in params){
-          url += `&${key}=${params[key]}`
-        }
-        let options = {
-          method: 'get',
-          url: url,
-          headers: {
-            Authorization: 'token ' + this.token
+          if (response.token == undefined ){
+            this.text = "You should login to continue to use the service."
+            return null
           }
-        }
-        axios(options)
+
+          this.token = response.token
+          let url = 'https://api.pagenote.xyz/note?'
+          let params = {
+            token: this.token,
+            domain: window.location.host,
+            path: window.location.pathname + window.location.search
+          }
+          for(let key in params){
+            url += `&${key}=${params[key]}`
+          }
+          let options = {
+            method: 'get',
+            url: url,
+            headers: {
+              Authorization: 'token ' + this.token
+            }
+          }
+          axios(options)
           .then( (res) => {
             console.log(res)
             this.text = res.data[0]['content']
+            this.login = true
+          }).catch( (err) => {
+            if( /401/.test(err.message)){
+              this.text = "You should login to continue to use the service."
+            }
           })
+        })
+
+
+
+           
+        
+        
+        
+        
 
     }
   }
