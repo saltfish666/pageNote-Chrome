@@ -16,6 +16,8 @@ you can write you note colse to the webpage.
 
 click this [link](https://chrome.google.com/webstore/detail/pagenote/emdjokmfeidbfldcdhckhpkcfiiekohl/related)
 
+if you are blocked to google.com, you can follow next step and install it by youself
+
 ## Is it safe?
 All source code is showed in this project.
 If you doubt it may different with Chrome intall package,
