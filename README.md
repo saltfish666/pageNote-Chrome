@@ -1,3 +1,4 @@
+![chrome users](https://img.shields.io/chrome-web-store/users/emdjokmfeidbfldcdhckhpkcfiiekohl.svg)
 ## What does it do ?
 When you brower a webpage, you may hava some ideas and 
 want to wirte some notes.
@@ -14,9 +15,9 @@ you can write you note colse to the webpage.
 
 ## How to install ?
 
-click this [link](https://chrome.google.com/webstore/detail/pagenote/emdjokmfeidbfldcdhckhpkcfiiekohl/related)
+Install from [chrome store (totally free)](https://chrome.google.com/webstore/detail/pagenote/emdjokmfeidbfldcdhckhpkcfiiekohl/related)
 
-if you are blocked to google.com, you can follow next step and install it by youself
+If you are blocked to google.com, you can follow next step and install it by youself
 
 ## Is it safe?
 All source code is showed in this project.
