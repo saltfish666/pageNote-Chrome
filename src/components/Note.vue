@@ -102,6 +102,7 @@
         position: fixed;
         top:20%;
         right: 0px;
+        z-index: 200;
     }
     .aside{
         display: flex;
@@ -124,6 +125,7 @@
     textarea, .body{
         width: 100%;
         height: 89%;
+        font-size: 22px;
         padding: 0px 5px;
         border: 0.1px solid #e6faff;
     }
