@@ -103,6 +103,12 @@
         top:20%;
         right: 0px;
         z-index: 200;
+        background-color: rgba(0,0,0,0);
+        background-image: 0;
+        border-left-width: 0px;
+        border-bottom-width: 0px;
+        border-top-width: 0px;
+        border-right-width: 0px;
     }
     .aside{
         display: flex;
