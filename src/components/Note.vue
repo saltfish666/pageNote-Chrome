@@ -29,7 +29,7 @@
         this.$emit('changeShowNoteState')
       },
       changeEditState () {
-        if(this.edit){
+        if(this.edit && this.login){
           let options = {
             method: 'post',
             url: 'https://libai688.com/note',
