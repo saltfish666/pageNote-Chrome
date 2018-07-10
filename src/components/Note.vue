@@ -87,6 +87,7 @@
             if( /401/.test(err.message)){
               this.text = "You should login to continue to use the service."
             }
+            this.login = false
           })
         })
     }

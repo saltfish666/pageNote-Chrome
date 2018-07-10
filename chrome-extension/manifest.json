@@ -12,7 +12,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://github.com/saltfish666/pageNote-vue?token=*"],
+      "matches": ["https://pagenote.xyz/?token=*"],
       "js": ["./content_scripts/setToken.js"]
     },{
       "matches": ["<all_urls>"],
