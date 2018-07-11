@@ -1,4 +1,8 @@
-![chrome users](https://img.shields.io/chrome-web-store/users/emdjokmfeidbfldcdhckhpkcfiiekohl.svg)
+![Chrome users](https://img.shields.io/chrome-web-store/users/emdjokmfeidbfldcdhckhpkcfiiekohl.svg)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/emdjokmfeidbfldcdhckhpkcfiiekohl.svg)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/price/emdjokmfeidbfldcdhckhpkcfiiekohl.svg)
+![Chrome vision](https://img.shields.io/chrome-web-store/v/emdjokmfeidbfldcdhckhpkcfiiekohl.svg)
+
 ## What does it do ?
 When you brower a webpage, you may hava some ideas and 
 want to wirte some notes.
@@ -15,9 +19,13 @@ you can write you note colse to the webpage.
 
 ## How to install ?
 
-Install from [chrome store (totally free)](https://chrome.google.com/webstore/detail/pagenote/emdjokmfeidbfldcdhckhpkcfiiekohl/related)
+- Install from [Chrome store (totally free)](https://chrome.google.com/webstore/detail/pagenote/emdjokmfeidbfldcdhckhpkcfiiekohl/related)
 
-If you are blocked to google.com, you can follow next step and install it by youself
+- Or download [last release \(zip file)](https://github.com/saltfish666/pageNote-Chrome/releases),
+unzip it, and upload to Chrome.
+![](./doc/readme/chrome-load.png)
+
+- If you are blocked to google.com, you can follow next step and install it by youself
 
 ## Is it safe?
 All source code is showed in this project.
