@@ -21,7 +21,8 @@
         edit: false,
         text: '',
         token: '',
-        login: false
+        login: false,
+        preText:''
       }
     },
     methods: {
@@ -29,7 +30,12 @@
         this.$emit('changeShowNoteState')
       },
       changeEditState () {
-        if(this.edit && this.login){
+        // if it is change from plain reader to edit status
+        // save text to preText
+        if(!this.edit) this.preText = this.text
+
+        //user should login and note text should changed
+        else if(this.login && this.preText !== this.text){
           let options = {
             method: 'post',
             url: 'https://libai688.com/note',
@@ -47,6 +53,7 @@
               console.log(res)
             })
         }
+
         this.edit = !this.edit
       }
     },
