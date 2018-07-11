@@ -25,8 +25,8 @@ const conf = {
           {
             loader: 'url-loader',
             options: {
-              'limit': 1024,
-              name: '[name]-aaa.[ext]'
+              'limit': 2048000,
+              name: '[name].[ext]'
             }
           }
         ]

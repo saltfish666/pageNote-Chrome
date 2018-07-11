@@ -1,7 +1,8 @@
 <template>
     <div class="note">
         <div class="aside">
-            <button @click="hidden" class="item show_state">hidden</button>
+            <!-- thank for free source https://www.iconfinder.com/icons/2125610/arrow_blue_free_outline_right_ui_icon -->
+            <img @click="hidden" class="item show_state" src="./hidden.svg"></img>
             <button @click="changeEditState" class="item edit">{{ edit ? "finish":"edit"}}</button>
             <a href="https://github.com/login/oauth/authorize?client_id=40e9e869abab72c0da76&scope=public_repo">
                 <button v-if="!login" class="item login">login</button>
@@ -151,8 +152,8 @@
     }
 
     .show_state{
-        background-color: black !important;
-        color: white !important;
+        background-color: white !important;
+        border: 1px solid #80e5ff;
     }
     .edit{
         background-color: #00ccff !important;

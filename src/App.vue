@@ -1,6 +1,9 @@
 <template>
     <div>
-        <button class="btn fix" :class="{hidden:(ifShowNote)}" @click="changeNoteShowState">note</button>
+        <div class="img-size">
+            <img class="fix" :class="{hidden:(ifShowNote)}" @click="changeNoteShowState" src="./btn.png"
+              style="height: 30px;"></img>
+        </div>
         <Note class="fix" :class="{hidden:(!ifShowNote)}" @changeShowNoteState="changeNoteShowState"></Note>
     </div>
 </template>
