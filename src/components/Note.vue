@@ -3,7 +3,7 @@
         <div class="aside">
             <!-- thank for free source https://www.iconfinder.com/icons/2125610/arrow_blue_free_outline_right_ui_icon -->
             <img @click="hidden" class="item show_state" src="./hidden.svg"></img>
-            <button @click="changeEditState" class="item edit">{{ edit ? "finish":"edit"}}</button>
+            <button @click="changeEditState" class="item edit" :disabled="!login" >{{ edit ? "finish":"edit"}}</button>
             <a href="https://github.com/login/oauth/authorize?client_id=40e9e869abab72c0da76&scope=public_repo">
                 <button v-if="!login" class="item login">login</button>
             </a>
@@ -62,7 +62,7 @@
     beforeMount () {
         chrome.runtime.sendMessage({ type:'get_token' }, (response) => {
           if (response.token == undefined ){
-            this.text = "You should login to continue to use the service."
+            this.defaultText= "You should login to continue to use the service."
             return null
           }
 
@@ -94,7 +94,7 @@
             this.login = true
           }).catch( (err) => {
             if( /401/.test(err.message)){
-              this.text = "You should login to continue to use the service."
+              this.defaultText = "You should login to continue to use the service."
             }
             this.login = false
           })
@@ -157,8 +157,13 @@
         border: 1px solid #80e5ff;
     }
     .edit{
-        background-color: #00ccff !important;
-        color: white !important;
+        background-color: #00ccff;
+        color: white;
+    }
+    .edit[disabled]{
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
     }
 
     .login{
