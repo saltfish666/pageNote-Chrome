@@ -8,8 +8,8 @@
                 <button v-if="!login" class="item login">login</button>
             </a>
         </div>
-        <div class="body" v-if="!edit">{{text}}</div>
-        <textarea v-model="text" v-if="edit"></textarea>
+        <div class="body" v-if="!edit">{{text ? text: defaultText}}</div>
+        <textarea v-model="text" v-if="edit" placeholder="It will be auto saved to cloud."></textarea>
     </div>
 </template>
 
@@ -21,6 +21,7 @@
       return {
         edit: false,
         text: '',
+        defaultText:'Wirte you note now!',
         token: '',
         login: false,
         preText:''
@@ -86,7 +87,7 @@
           .then( (res) => {
             console.log(res)
             if(res.data.length == 0){
-              this.text = "it is null!"
+              // this.text = "it is null!"
             }else{
               this.text = res.data[0]['content']
             }
